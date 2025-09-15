@@ -9,33 +9,27 @@ import Categories from "../Blog/Categories";
 import shopData from "../Shop/shopData"; 
  
 const BlogGridWithSidebar = () => {
+  // Updated categories with trending digital products & services
   const categories = [
-    {
-      name: "Desktop",
-      products: 10,
-    },
-    {
-      name: "Laptop",
-      products: 12,
-    },
-    {
-      name: "Monitor",
-      products: 30,
-    },
-    {
-      name: "UPS",
-      products: 23,
-    },
-    {
-      name: "Phone",
-      products: 10,
-    },
-    {
-      name: "Watch",
-      products: 13,
-    },
+    { name: "AI Tools", products: 15 },
+    { name: "SaaS Products", products: 12 },
+    { name: "Software Development", products: 8 },
+    { name: "Online Courses", products: 20 },
+    { name: "SEO Tools", products: 10 },
+    { name: "Design Templates", products: 18 },
   ];
 
+  // Updated tags for sidebar
+  const tags = [
+    "AI Writing",
+    "Chatbots",
+    "SaaS",
+    "Web Development",
+    "Mobile Apps",
+    "Graphic Design",
+    "SEO",
+    "Digital Marketing",
+  ];
   return (
     <>
       <Breadcrumb title={"Blog Grid Sidebar"} pages={["blog grid sidebar"]} />

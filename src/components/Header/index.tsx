@@ -36,16 +36,17 @@ const Header = () => {
     window.addEventListener("scroll", handleStickyMenu);
   });
 
-  const options = [
-    { label: "All Categories", value: "0" },
-    { label: "Desktop", value: "1" },
-    { label: "Laptop", value: "2" },
-    { label: "Monitor", value: "3" },
-    { label: "Phone", value: "4" },
-    { label: "Watch", value: "5" },
-    { label: "Mouse", value: "6" },
-    { label: "Tablet", value: "7" },
-  ];
+const options = [
+  { label: "All Categories", value: "0" },
+  { label: "AI Tools", value: "1" },
+  { label: "SaaS Products", value: "2" },
+  { label: "Software Development", value: "3" },
+  { label: "Online Courses", value: "4" },
+  { label: "SEO Tools", value: "5" },
+  { label: "Design Templates", value: "6" },
+  { label: "Digital Marketing Services", value: "7" },
+];
+
 
   return (
     <header
@@ -148,7 +149,7 @@ const Header = () => {
                   24/7 SUPPORT
                 </span>
                 <p className="font-medium text-custom-sm text-dark">
-                  (+965) 7492-3477
+                  (+880) 1749-160165
                 </p>
               </div>
             </div>
