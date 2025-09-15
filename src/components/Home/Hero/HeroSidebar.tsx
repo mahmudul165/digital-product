@@ -5,20 +5,20 @@ import Image from "next/image";
 const sidebarItems = [
   {
     id: 1,
-    title: "iPhone 14 Plus & 14 Pro Max",
-    offerText: "limited time offer",
+   title: "Software Development",
+    offerText: "special discount",
     price: "$699",
     oldPrice: "$999",
-    image: "/images/hero/hero-02.png",
+    image: "/images/hero/s-22.png",
     link: "#",
   },
   {
     id: 2,
-    title: "Wireless Headphone",
-    offerText: "limited time offer",
+    title: "AI Chatbot Service",
+    offerText: "save 25%",
     price: "$699",
     oldPrice: "$999",
-    image: "/images/hero/hero-01.png",
+    image: "/images/hero/s-11.png",
     link: "#",
   },
  
@@ -60,8 +60,8 @@ function HeroSidebar() {
                 <Image
                   src={item.image}
                   alt={item.title}
-                  width={123}
-                  height={161}
+                  width={130}
+                  height={171}
                 />
               </div>
             </div>

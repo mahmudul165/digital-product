@@ -13,7 +13,7 @@ const slidesData = [
     title: "AI Writing Tool Subscription",
     description:
       "Boost your content creation with our smart AI writing assistant for blogs, ads, and social media.",
-    image: "/images/hero/s-1.png",
+    image: "/images/hero/s-11.png",
     link: "#",
   },
   {
@@ -49,7 +49,7 @@ const slidesData = [
     title: "SaaS Productivity Suite",
     description:
       "Manage your team, projects, and workflow efficiently with our cloud-based SaaS tools.",
-    image: "/images/hero/s-5.png",
+    image: "/images/hero/s-22.png",
     link: "#",
   },
 ];
