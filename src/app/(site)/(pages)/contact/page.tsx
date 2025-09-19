@@ -1,3 +1,4 @@
+ 
 import Contact from "@/components/Contact";
 
 import { Metadata } from "next";
