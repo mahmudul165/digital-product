@@ -32,7 +32,7 @@ const Footer = () => {
                     />
                   </svg>
                 </span>
-                685 Market Street,Las Vegas, LA 95820,United States.
+                North Mugda, Dhaka-1216, Bangladesh
               </li>
 
               <li>
@@ -61,7 +61,7 @@ const Footer = () => {
                       fill="#3C50E0"
                     />
                   </svg>
-                  (+099) 532-786-9843
+                  (+880) 1749160165
                 </a>
               </li>
 
@@ -81,7 +81,7 @@ const Footer = () => {
                       fill="#3C50E0"
                     />
                   </svg>
-                  support@example.com
+                  support@prodigitaltech.com
                 </a>
               </li>
             </ul>

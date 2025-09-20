@@ -5,6 +5,7 @@ import "../css/style.css";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 
+
 import { ModalProvider } from "../context/QuickViewModalContext";
 import { CartModalProvider } from "../context/CartSidebarModalContext";
 import { ReduxProvider } from "@/redux/provider";
