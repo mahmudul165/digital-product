@@ -12,11 +12,12 @@ const BlogGridWithSidebar = () => {
   // Updated categories with trending digital products & services
   const categories = [
     { name: "AI Tools", products: 15 },
+    { name: "SEO Tools", products: 10 },
     { name: "SaaS Products", products: 12 },
     { name: "Software Development", products: 8 },
-    { name: "Online Courses", products: 20 },
-    { name: "SEO Tools", products: 10 },
     { name: "Design Templates", products: 18 },
+    { name: "Online Courses", products: 20 },    
+    
   ];
 
   // Updated tags for sidebar

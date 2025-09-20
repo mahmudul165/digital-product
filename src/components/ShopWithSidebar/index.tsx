@@ -30,39 +30,49 @@ const ShopWithSidebar = () => {
     { label: "Old Products", value: "2" },
   ];
 
+  // const categories = [
+  //   {
+  //     name: "Desktop",
+  //     products: 10,
+  //     isRefined: true,
+  //   },
+  //   {
+  //     name: "Laptop",
+  //     products: 12,
+  //     isRefined: false,
+  //   },
+  //   {
+  //     name: "Monitor",
+  //     products: 30,
+  //     isRefined: false,
+  //   },
+  //   {
+  //     name: "UPS",
+  //     products: 23,
+  //     isRefined: false,
+  //   },
+  //   {
+  //     name: "Phone",
+  //     products: 10,
+  //     isRefined: false,
+  //   },
+  //   {
+  //     name: "Watch",
+  //     products: 13,
+  //     isRefined: false,
+  //   },
+  // ];
   const categories = [
-    {
-      name: "Desktop",
-      products: 10,
-      isRefined: true,
-    },
-    {
-      name: "Laptop",
-      products: 12,
-      isRefined: false,
-    },
-    {
-      name: "Monitor",
-      products: 30,
-      isRefined: false,
-    },
-    {
-      name: "UPS",
-      products: 23,
-      isRefined: false,
-    },
-    {
-      name: "Phone",
-      products: 10,
-      isRefined: false,
-    },
-    {
-      name: "Watch",
-      products: 13,
-      isRefined: false,
-    },
+    { name: "All Categories", value: "0", products: 0, isRefined: true },
+    { name: "AI Tools", value: "1", products: 0, isRefined: false },
+    { name: "SEO Tools", value: "2", products: 0, isRefined: false },
+    { name: "SaaS Products", value: "3", products: 0, isRefined: false },
+    { name: "Software Development", value: "4", products: 0, isRefined: false },
+    { name: "Design Templates", value: "5", products: 0, isRefined: false },
+    { name: "Digital Marketing Services", value: "6", products: 0, isRefined: false },
+    { name: "Online Courses", value: "7", products: 0, isRefined: false },
   ];
-
+  
   const genders = [
     {
       name: "Men",
@@ -160,13 +170,13 @@ const ShopWithSidebar = () => {
                   <CategoryDropdown categories={categories} />
 
                   {/* <!-- gender box --> */}
-                  <GenderDropdown genders={genders} />
+                  {/* <GenderDropdown genders={genders} /> */}
 
                   {/* // <!-- size box --> */}
-                  <SizeDropdown />
+                  {/* <SizeDropdown /> */}
 
                   {/* // <!-- color box --> */}
-                  <ColorsDropdwon />
+                  {/* <ColorsDropdwon /> */}
 
                   {/* // <!-- price range box --> */}
                   <PriceDropdown />

@@ -5,6 +5,11 @@ const data = [
     img: "/images/categories/categories-01.png",
   },
   {
+    title: "SEO Tools",
+    id: 5,
+    img: "/images/categories/categories-05.png",
+  },
+  {
     title: "SaaS Products",
     id: 2,
     img: "/images/categories/categories-02.png",
@@ -14,21 +19,13 @@ const data = [
     id: 3,
     img: "/images/categories/categories-03.png",
   },
-  {
-    title: "Online Courses",
-    id: 4,
-    img: "/images/categories/categories-04.png",
-  },
-  {
-    title: "SEO Tools",
-    id: 5,
-    img: "/images/categories/categories-05.png",
-  },
+   
   {
     title: "Design Templates",
     id: 6,
     img: "/images/categories/categories-06.png",
   },
+  
   {
     title: "Digital Marketing Services",
     id: 7,
@@ -37,6 +34,11 @@ const data = [
   {
     title: "Chatbot & AI Services",
     id: 8,
+    img: "/images/categories/categories-04.png",
+  },
+  {
+    title: "Online Courses",
+    id: 4,
     img: "/images/categories/categories-04.png",
   },
 ];

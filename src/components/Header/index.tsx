@@ -39,12 +39,12 @@ const Header = () => {
 const options = [
   { label: "All Categories", value: "0" },
   { label: "AI Tools", value: "1" },
-  { label: "SaaS Products", value: "2" },
-  { label: "Software Development", value: "3" },
-  { label: "Online Courses", value: "4" },
-  { label: "SEO Tools", value: "5" },
-  { label: "Design Templates", value: "6" },
-  { label: "Digital Marketing Services", value: "7" },
+  { label: "SEO Tools", value: "2" },
+  { label: "SaaS Products", value: "3" },
+  { label: "Software Development", value: "4" },
+  { label: "Design Templates", value: "5" },
+  { label: "Digital Marketing Services", value: "6" },
+  { label: "Online Courses", value: "7" },
 ];
 
 
