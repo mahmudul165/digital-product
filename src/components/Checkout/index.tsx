@@ -165,7 +165,7 @@ const Checkout = () => {
       url: "https://payment.rupantorpay.com/api/payment/checkout",
       headers: {
         accept: "application/json",
-        "X-API-KEY": process.env.NEXT_PUBLIC_RUPANTORPAY_API_KEY,
+        "X-API-KEY": process.env.RUPANTORPAY_API_KEY,
         "content-type": "application/json",
       },
       data: {
