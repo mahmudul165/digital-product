@@ -301,14 +301,15 @@ const Checkout = () => {
 
                 {/* Checkout Button */}
                 <button
-                  type="submit"
+                 // type="submit"
                   onClick={handlePayment}
                   //disabled={loading}
                   // className={`w-full flex justify-center font-medium text-white bg-blue py-3 px-6 rounded-md ease-out duration-200 hover:bg-blue-dark ${
                   //   loading ? "opacity-70 cursor-not-allowed" : ""
                   // }`}
                 >
-                  {loading ? "Processing..." : "Proceed to Checkout"}
+                  {/* {loading ? "Processing..." : "Proceed to Checkout"} */}
+                  pay
                 </button>
               </div>
             </div>
