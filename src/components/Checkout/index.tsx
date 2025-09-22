@@ -241,8 +241,8 @@ const Checkout = () => {
               {/* Left Column */}
               <div className="lg:max-w-[670px] w-full space-y-7.5">
                 <Login />
-                <Billing />
-                <Shipping />
+                {/* <Billing />
+                <Shipping /> */}
 
                 {/* Other Notes */}
                 <div className="bg-white shadow-1 rounded-[10px] p-4 sm:p-8.5">
