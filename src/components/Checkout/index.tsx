@@ -362,6 +362,8 @@ const Checkout = () => {
           amount: 10, // your amount
           fullname: 'mahmud',
           email: 'mahmudul.4918@gmail.com',
+          webhook_url: 'https://digital-product-orpin.vercel.app',
+          metadata: {phone: '01568109275'}
         }),
       });
 
