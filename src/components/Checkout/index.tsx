@@ -295,7 +295,7 @@ const Checkout = () => {
                   </div>
                 </div>
 
-                <Coupon />
+                {/* <Coupon /> */}
                 {/* <ShippingMethod /> */}
                 {/* <PaymentMethod /> */}
 
