@@ -159,60 +159,36 @@ import Billing from "./Billing";
 const Checkout = () => {
   const [loading, setLoading] = useState(false);
 
-  // const handlePayment = async () => {
-  //   const options = {
-  //     method: "POST",
-  //     url: "https://payment.rupantorpay.com/api/payment/checkout",
-  //     headers: {
-  //       accept: "application/json",
-  //       "X-API-KEY": process.env.RUPANTORPAY_API_KEY,
-  //       "content-type": "application/json",
-  //     },
-  //     data: {
-  //       success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success`,
-  //       cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cancel`,
-  //       fullname: "mahmud",
-  //       amount: "35",
-  //       email: "mah@gmail.com",
-  //       webhook_url: "https://digital-product-orpin.vercel.app",
-  //       metadata: { phone: "01568109275" },
-  //     },
-  //   };
-
-  //   try {
-  //     console.log("check options", options);
-  //     const res = await axios.request(options);
-  //     console.log("test response", res);
-  //     console.log("test data", res?.data);
-  //     console.log("test status", res?.data?.payment_url);
-
-  //     // If status is true, redirect to payment_url
-  //     if (res?.data?.status) {
-  //       window.location.href = res.data.payment_url;
-  //     } else {
-  //       alert("Failed to create payment. Please try again.");
-  //     }
-  //   } catch (error) {
-  //     console.error("Payment Error:", error);
-  //     alert("Something went wrong while processing payment.");
-  //   }
-  // };
-  
-
-
   const handlePayment = async () => {
-    try {
-      const res = await axios.post("/api/payment", {
+    const options = {
+      method: "POST",
+      url: "https://payment.rupantorpay.com/api/payment/checkout",
+      headers: {
+        accept: "application/json",
+        "X-API-KEY": process.env.RUPANTORPAY_API_KEY,
+        "content-type": "application/json",
+      },
+      data: {
+        success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success`,
+        cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cancel`,
         fullname: "mahmud",
         amount: "35",
         email: "mah@gmail.com",
-        phone: "01568109275",
-      });
+        webhook_url: "https://digital-product-orpin.vercel.app",
+        metadata: { phone: "01568109275" },
+      },
+    };
 
-      console.log("API Response:", res.data);
+    try {
+      console.log("check options", options);
+      const res = await axios.request(options);
+      console.log("test response", res);
+      console.log("test data", res?.data);
+      console.log("test status", res?.data?.payment_url);
 
-      if (res.data?.status) {
-        window.location.href = res.data.payment_url; // redirect user
+      // If status is true, redirect to payment_url
+      if (res?.data) {
+        window.location.href = res.data?.payment_url;
       } else {
         alert("Failed to create payment. Please try again.");
       }
@@ -221,11 +197,35 @@ const Checkout = () => {
       alert("Something went wrong while processing payment.");
     }
   };
+  
 
-  useEffect(() => {
-    // Optional: Trigger payment on page load for testing
-    // handlePayment();
-  }, []);
+
+  // const handlePayment = async () => {
+  //   try {
+  //     const res = await axios.post("/api/payment", {
+  //       fullname: "mahmud",
+  //       amount: "35",
+  //       email: "mah@gmail.com",
+  //       phone: "01568109275",
+  //     });
+
+  //     console.log("API Response:", res.data);
+
+  //     if (res.data?.status) {
+  //       window.location.href = res.data.payment_url; // redirect user
+  //     } else {
+  //       alert("Failed to create payment. Please try again.");
+  //     }
+  //   } catch (error) {
+  //     console.error("Payment Error:", error);
+  //     alert("Something went wrong while processing payment.");
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   // Optional: Trigger payment on page load for testing
+  //   // handlePayment();
+  // }, []);
   const orderItems = [
     { name: "iPhone 14 Plus, 6/128GB", price: 899 },
     { name: "Asus RT Dual Band Router", price: 129 },
