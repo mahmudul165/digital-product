@@ -184,8 +184,8 @@ const shopData: Product[] = [
     id: 3,
     imgs: {
       thumbnails: [
-        "/images/products/grammarly-sm-1.png",
-        "/images/products/grammarly-sm-2.png",
+        "/images/products/grammarly-bg-1.png",
+        "/images/products/grammarly-bg-1.png",
       ],
       previews: [
         "/images/products/grammarly-bg-1.png",
