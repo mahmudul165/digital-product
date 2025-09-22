@@ -8,6 +8,7 @@ import ShippingMethod from "./ShippingMethod";
 import PaymentMethod from "./PaymentMethod";
 import Coupon from "./Coupon";
 import Billing from "./Billing";
+import axios from "axios";
 
 
 
@@ -43,30 +44,25 @@ const Checkout = () => {
   const handlePayment = async () => {
     setLoading(true);
     try {
-      const res = await fetch("/api/payment", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          phone: "01612345678",
-          amount: "500"
-        })
+      const { data } = await axios.post("/api/payment", {
+        fullname: "Mahmud",
+        email: "m@gmail.com",
+        phone: "017XXXXXXXX",
+        amount: 5
       });
 
-      const data = await res.json();
-
-      if (data?.payment_url) {
-        window.location.href = data.payment_url; // Redirect to RupantorPay
+      if (data?.checkout_url) {
+        window.location.href = data.checkout_url; // Redirect to RupantorPay
       } else {
         alert("Payment initiation failed.");
       }
     } catch (err) {
-      console.error(err);
+      console.error("Payment Error:", err.response?.data || err.message);
       alert("Something went wrong!");
     } finally {
       setLoading(false);
     }
   };
-
   const orderItems = [
     { name: "iPhone 14 Plus, 6/128GB", price: 899 },
     { name: "Asus RT Dual Band Router", price: 129 },
