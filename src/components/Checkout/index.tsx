@@ -240,7 +240,7 @@ const Checkout = () => {
             <div className="flex flex-col lg:flex-row gap-7.5 xl:gap-11">
               {/* Left Column */}
               <div className="lg:max-w-[670px] w-full space-y-7.5">
-                <Login />
+                {/* <Login /> */}
                 {/* <Billing />
                 <Shipping /> */}
 
@@ -288,9 +288,9 @@ const Checkout = () => {
                     {/* Total */}
                     <div className="flex items-center justify-between pt-5">
                       <p className="font-medium text-lg text-dark">Total</p>
-                      <p className="font-medium text-lg text-dark text-right">
+                      {/* <p className="font-medium text-lg text-dark text-right">
                         ${totalPrice.toFixed(2)}
-                      </p>
+                      </p> */}
                     </div>
                   </div>
                 </div>
