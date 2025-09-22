@@ -360,6 +360,10 @@ const Checkout = () => {
           success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success`,
           cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cancel`,
           amount: 100, // your amount
+
+          fullname: 'mahmud',
+
+    email: 'mah@gmail.com',
         }),
       });
 
