@@ -160,34 +160,35 @@ const Checkout = () => {
   const [loading, setLoading] = useState(false);
 
   const handlePayment = async () => {
-    try {
-      const response = await axios.post(
-        "https://payment.rupantorpay.com/api/payment/checkout",
-        {
-          success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success`,
-          cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cancel`,
+    const options = {
+      method: "POST",
+      url: "https://payment.rupantorpay.com/api/payment/checkout",
+      headers: {
+        accept: "application/json",
+        "X-API-KEY": process.env.NEXT_PUBLIC_RUPANTORPAY_API_KEY,
+        "content-type": "application/json",
+      },
+      data: {
+        success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success`,
+        cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cancel`,
+        fullname: "mahmud",
+        amount: "35",
+        email: "mah@gmail.com",
+        webhook_url: "https://digital-product-orpin.vercel.app",
+        metadata: { phone: "01568109275" },
+      },
+    };
 
-          fullname: 'mahmud',
-          amount: '35',
-          email: 'mah@gmail.com',
-          phone: '01749160165', // Moved from metadata
-          // webhook_url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/webhook`,
-          webhook_url: 'https://digital-product-orpin.vercel.app',
-       
-        },
-        {
-          headers: {
-            accept: "application/json",
-            "X-API-KEY": process.env.RUPANTORPAY_API_KEY,
-            "content-type": "application/json",
-          },
-        }
-      );
-console.log('test data',response?.data)
-console.log('test status',response.data.payment_url)
+    try {
+      const res = await axios.request(options);
+
+      console.log("test response", res);
+      console.log("test data", res?.data);
+      console.log("test status", res?.data?.payment_url);
+
       // If status is true, redirect to payment_url
-      if (response.data?.status) {
-        window.location.href = response.data.payment_url;
+      if (res?.data?.status) {
+        window.location.href = res.data.payment_url;
       } else {
         alert("Failed to create payment. Please try again.");
       }
