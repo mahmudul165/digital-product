@@ -316,6 +316,10 @@ const Checkout = () => {
                   {/* {loading ? "Processing..." : "Proceed to Checkout"} */}
                   pay
                 </button>
+
+                <button onClick={handlePayment} className="bg-blue-500 text-white p-2 rounded">
+        Pay Now
+      </button>
               </div>
             </div>
           </form>
