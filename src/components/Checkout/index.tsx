@@ -159,36 +159,60 @@ import Billing from "./Billing";
 const Checkout = () => {
   const [loading, setLoading] = useState(false);
 
+  // const handlePayment = async () => {
+  //   const options = {
+  //     method: "POST",
+  //     url: "https://payment.rupantorpay.com/api/payment/checkout",
+  //     headers: {
+  //       accept: "application/json",
+  //       "X-API-KEY": process.env.RUPANTORPAY_API_KEY,
+  //       "content-type": "application/json",
+  //     },
+  //     data: {
+  //       success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success`,
+  //       cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cancel`,
+  //       fullname: "mahmud",
+  //       amount: "35",
+  //       email: "mah@gmail.com",
+  //       webhook_url: "https://digital-product-orpin.vercel.app",
+  //       metadata: { phone: "01568109275" },
+  //     },
+  //   };
+
+  //   try {
+  //     console.log("check options", options);
+  //     const res = await axios.request(options);
+  //     console.log("test response", res);
+  //     console.log("test data", res?.data);
+  //     console.log("test status", res?.data?.payment_url);
+
+  //     // If status is true, redirect to payment_url
+  //     if (res?.data?.status) {
+  //       window.location.href = res.data.payment_url;
+  //     } else {
+  //       alert("Failed to create payment. Please try again.");
+  //     }
+  //   } catch (error) {
+  //     console.error("Payment Error:", error);
+  //     alert("Something went wrong while processing payment.");
+  //   }
+  // };
+  
+
+
   const handlePayment = async () => {
-    const options = {
-      method: "POST",
-      url: "https://payment.rupantorpay.com/api/payment/checkout",
-      headers: {
-        accept: "application/json",
-        "X-API-KEY": process.env.RUPANTORPAY_API_KEY,
-        "content-type": "application/json",
-      },
-      data: {
-        success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success`,
-        cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cancel`,
+    try {
+      const res = await axios.post("/api/payment", {
         fullname: "mahmud",
         amount: "35",
         email: "mah@gmail.com",
-        webhook_url: "https://digital-product-orpin.vercel.app",
-        metadata: { phone: "01568109275" },
-      },
-    };
+        phone: "01568109275",
+      });
 
-    try {
-      console.log("check options", options);
-      const res = await axios.request(options);
-      console.log("test response", res);
-      console.log("test data", res?.data);
-      console.log("test status", res?.data?.payment_url);
+      console.log("API Response:", res.data);
 
-      // If status is true, redirect to payment_url
-      if (res?.data?.status) {
-        window.location.href = res.data.payment_url;
+      if (res.data?.status) {
+        window.location.href = res.data.payment_url; // redirect user
       } else {
         alert("Failed to create payment. Please try again.");
       }
@@ -197,7 +221,6 @@ const Checkout = () => {
       alert("Something went wrong while processing payment.");
     }
   };
-  
   const orderItems = [
     { name: "iPhone 14 Plus, 6/128GB", price: 899 },
     { name: "Asus RT Dual Band Router", price: 129 },

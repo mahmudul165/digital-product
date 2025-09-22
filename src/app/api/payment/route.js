@@ -43,45 +43,40 @@
 // }
 
 
+// app/api/payment/route.js
+import { NextResponse } from "next/server";
 import axios from "axios";
 
 export async function POST(req) {
   try {
     const body = await req.json();
 
-    if (!body.fullname || !body.email || !body.amount) {
-      return new Response(JSON.stringify({ error: "Missing required fields" }), { status: 400 });
-    }
-
-    if (isNaN(body.amount) || Number(body.amount) <= 0) {
-      return new Response(JSON.stringify({ error: "Amount must be a positive number" }), { status: 400 });
-    }
-
-    const data = {
-      fullname: body.fullname,
-      email: body.email,
-      phone: body.phone || undefined,
-      amount: Number(body.amount),
-      success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success`,
-      cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cancel`,
-    };
-
-    const options = {
-      method: "POST",
-      url: "https://payment.rupantorpay.com/api/payment/checkout",
-      headers: {
-        accept: "application/json",
-        "X-API-KEY": process.env.RUPANTORPAY_API_KEY || "",
-        "content-type": "application/json",
+    const response = await axios.post(
+      "https://payment.rupantorpay.com/api/payment/checkout",
+      {
+        success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success`,
+        cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cancel`,
+        fullname: body.fullname,
+        amount: body.amount,
+        email: body.email,
+        webhook_url: "https://digital-product-orpin.vercel.app",
+        metadata: { phone: body.phone },
       },
-      data,
-    };
+      {
+        headers: {
+          accept: "application/json",
+          "X-API-KEY": process.env.RUPANTORPAY_API_KEY, // safe in backend
+          "content-type": "application/json",
+        },
+      }
+    );
 
-    const response = await axios.request(options);
-
-    return new Response(JSON.stringify(response.data), { status: 200 });
-  } catch (err) {
-    console.error("Payment Error:", err.response?.data || err.message);
-    return new Response(JSON.stringify({ error: "Payment initiation failed" }), { status: 500 });
+    return NextResponse.json(response.data, { status: 200 });
+  } catch (error) {
+    console.error("Payment API Error:", error.response?.data || error.message);
+    return NextResponse.json(
+      { error: "Payment request failed" },
+      { status: 500 }
+    );
   }
 }
