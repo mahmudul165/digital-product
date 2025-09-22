@@ -57,8 +57,8 @@ export async function POST(req) {
 
     // Prepare request data for RupantorPay
     const data = {
-    //   success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success`,
-    //   cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cancel`,
+       success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success`,
+      cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cancel`,
       fullname: body.fullname,
       email: body.email,
       phone: body.phone || undefined,
