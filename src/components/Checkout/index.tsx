@@ -164,15 +164,16 @@ const Checkout = () => {
       const response = await axios.post(
         "https://payment.rupantorpay.com/api/payment/checkout",
         {
-
+          success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success`,
+          cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cancel`,
 
           fullname: 'mahmud',
           amount: '35',
           email: 'mah@gmail.com',
           phone: '01749160165', // Moved from metadata
-          webhook_url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/webhook`,
-          success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success`,
-          cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cancel`
+          // webhook_url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/webhook`,
+          webhook_url: 'https://digital-product-orpin.vercel.app',
+       
         },
         {
           headers: {
