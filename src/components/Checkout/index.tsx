@@ -180,8 +180,8 @@ const Checkout = () => {
     };
 
     try {
+      console.log("check options", options);
       const res = await axios.request(options);
-
       console.log("test response", res);
       console.log("test data", res?.data);
       console.log("test status", res?.data?.payment_url);
