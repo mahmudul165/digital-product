@@ -145,7 +145,7 @@
 
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 import Breadcrumb from "../Common/Breadcrumb";
@@ -221,6 +221,11 @@ const Checkout = () => {
       alert("Something went wrong while processing payment.");
     }
   };
+
+  useEffect(() => {
+    // Optional: Trigger payment on page load for testing
+    // handlePayment();
+  }, []);
   const orderItems = [
     { name: "iPhone 14 Plus, 6/128GB", price: 899 },
     { name: "Asus RT Dual Band Router", price: 129 },
