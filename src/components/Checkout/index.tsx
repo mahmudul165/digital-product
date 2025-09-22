@@ -159,30 +159,38 @@ import Billing from "./Billing";
 const Checkout = () => {
   const [loading, setLoading] = useState(false);
 
-  const handlePayment = async (e) => {
-    e.preventDefault(); // Prevent default form submission
-    setLoading(true);
+  const handlePayment = async () => {
     try {
-      const { data } = await axios.post("/api/payment", {
-        fullname: "Mahmud",
-        email: "m@gmail.com",
-        phone: "017XXXXXXXX",
-        amount: 5
-      });
+      const response = await axios.post(
+        "https://payment.rupantorpay.com/api/payment/checkout",
+        {
+          fullname: "mahmud",
+          amount: "35",
+          email: "mah@gmail.com",
+          success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success`,
+          cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cancel`
+        },
+        {
+          headers: {
+            accept: "application/json",
+            "X-API-KEY": process.env.RUPANTORPAY_API_KEY,
+            "content-type": "application/json",
+          },
+        }
+      );
 
-      if (data?.checkout_url) {
-        window.location.href = data.checkout_url; // Redirect to RupantorPay
+      // If status is true, redirect to payment_url
+      if (response.data.status) {
+        window.location.href = response.data.payment_url;
       } else {
-        alert("Payment initiation failed.");
+        alert("Failed to create payment. Please try again.");
       }
-    } catch (err) {
-      console.error("Payment Error:", err.response?.data || err.message);
-      alert("Something went wrong!");
-    } finally {
-      setLoading(false);
+    } catch (error) {
+      console.error("Payment Error:", error);
+      alert("Something went wrong while processing payment.");
     }
   };
-
+  
   const orderItems = [
     { name: "iPhone 14 Plus, 6/128GB", price: 899 },
     { name: "Asus RT Dual Band Router", price: 129 },
