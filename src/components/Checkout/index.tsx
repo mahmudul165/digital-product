@@ -245,7 +245,7 @@ const Checkout = () => {
                 <Shipping /> */}
 
                 {/* Other Notes */}
-                <div className="bg-white shadow-1 rounded-[10px] p-4 sm:p-8.5">
+                {/* <div className="bg-white shadow-1 rounded-[10px] p-4 sm:p-8.5">
                   <label htmlFor="notes" className="block mb-2.5">
                     Other Notes (optional)
                   </label>
@@ -256,7 +256,7 @@ const Checkout = () => {
                     placeholder="Notes about your order, e.g. special notes for delivery."
                     className="rounded-md border border-gray-3 bg-gray-1 placeholder:text-dark-5 w-full p-5 outline-none duration-200 focus:border-transparent focus:shadow-input focus:ring-2 focus:ring-blue/20"
                   ></textarea>
-                </div>
+                </div> */}
               </div>
 
               {/* Right Column */}
@@ -275,7 +275,7 @@ const Checkout = () => {
                     </div>
 
                     {/* Order Items */}
-                    {orderItems.map((item, index) => (
+                    {/* {orderItems.map((item, index) => (
                       <div
                         key={index}
                         className="flex items-center justify-between py-5 border-b border-gray-3"
@@ -283,7 +283,7 @@ const Checkout = () => {
                         <p className="text-dark">{item.name}</p>
                         <p className="text-dark text-right">${item.price.toFixed(2)}</p>
                       </div>
-                    ))}
+                    ))} */}
 
                     {/* Total */}
                     <div className="flex items-center justify-between pt-5">
@@ -303,10 +303,10 @@ const Checkout = () => {
                 <button
                   type="submit"
                   onClick={handlePayment}
-                  disabled={loading}
-                  className={`w-full flex justify-center font-medium text-white bg-blue py-3 px-6 rounded-md ease-out duration-200 hover:bg-blue-dark ${
-                    loading ? "opacity-70 cursor-not-allowed" : ""
-                  }`}
+                  //disabled={loading}
+                  // className={`w-full flex justify-center font-medium text-white bg-blue py-3 px-6 rounded-md ease-out duration-200 hover:bg-blue-dark ${
+                  //   loading ? "opacity-70 cursor-not-allowed" : ""
+                  // }`}
                 >
                   {loading ? "Processing..." : "Proceed to Checkout"}
                 </button>
