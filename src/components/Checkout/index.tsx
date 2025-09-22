@@ -164,9 +164,13 @@ const Checkout = () => {
       const response = await axios.post(
         "https://payment.rupantorpay.com/api/payment/checkout",
         {
+
+
           fullname: 'mahmud',
           amount: '35',
           email: 'mah@gmail.com',
+          phone: '01749160165', // Moved from metadata
+          webhook_url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/webhook`,
           success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success`,
           cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cancel`
         },
@@ -178,9 +182,9 @@ const Checkout = () => {
           },
         }
       );
-
+console.log('test',response?.data)
       // If status is true, redirect to payment_url
-      if (response.data.status) {
+      if (response.data?.status) {
         window.location.href = response.data.payment_url;
       } else {
         alert("Failed to create payment. Please try again.");
