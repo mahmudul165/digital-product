@@ -370,9 +370,9 @@ const Checkout = () => {
       const data = await res.json();
       console.log("Payment Response:", data);
 
-      if (data.checkout_url) {
+      if (data.payment_url) {
         // Redirect user to the payment page
-        window.location.href = data.checkout_url;
+        window.location.href = data.payment_url;
       } else {
         alert("Payment creation failed");
       }
