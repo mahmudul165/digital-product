@@ -1,12 +1,50 @@
 import { selectTotalPrice } from "@/redux/features/cart-slice";
 import { useAppSelector } from "@/redux/store";
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 
 const OrderSummary = () => {
   const cartItems = useAppSelector((state) => state.cartReducer.items);
   const totalPrice = useSelector(selectTotalPrice);
+  const [loading, setLoading] = useState(false);
 
+  const handlePayment = async () => {
+    setLoading(true);
+
+    try {
+      const res = await fetch("/api/payment", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success`,
+          cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cancel`,
+          amount: 10, // your amount
+          fullname: 'mahmud',
+          email: 'mahmudul.4918@gmail.com',
+          webhook_url: 'https://digital-product-orpin.vercel.app',
+          metadata: {phone: '01568109275'}
+        }),
+      });
+
+      const data = await res.json();
+      console.log("Payment Response:", data);
+
+      if (data?.payment_url
+        ) {
+        // Redirect user to the payment page
+        window.location.href = data.payment_url;
+      } else {
+        alert("Payment creation failed");
+      }
+    } catch (err) {
+      console.error("Payment Error:", err);
+      alert("Payment Error. Check console.");
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <div className="lg:max-w-[455px] w-full">
       {/* <!-- order list box --> */}
@@ -55,6 +93,7 @@ const OrderSummary = () => {
           {/* <!-- checkout button --> */}
           <button
             type="submit"
+            onClick={handlePayment} disabled={loading}
             className="w-full flex justify-center font-medium text-white bg-blue py-3 px-6 rounded-md ease-out duration-200 hover:bg-blue-dark mt-7.5"
           >
             Process to Checkout

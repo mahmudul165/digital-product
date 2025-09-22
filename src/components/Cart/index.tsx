@@ -1,4 +1,5 @@
 "use client";
+ 
 import React from "react";
 import Discount from "./Discount";
 import OrderSummary from "./OrderSummary";
@@ -9,7 +10,7 @@ import Link from "next/link";
 
 const Cart = () => {
   const cartItems = useAppSelector((state) => state.cartReducer.items);
-
+  
   return (
     <>
       {/* <!-- ===== Breadcrumb Section Start ===== --> */}
