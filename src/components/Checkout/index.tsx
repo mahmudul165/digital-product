@@ -359,18 +359,17 @@ const Checkout = () => {
         body: JSON.stringify({
           success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success`,
           cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cancel`,
-          amount: 100, // your amount
-
+          amount: 10, // your amount
           fullname: 'mahmud',
-
-    email: 'mah@gmail.com',
+          email: 'mahmudul.4918@gmail.com',
         }),
       });
 
       const data = await res.json();
       console.log("Payment Response:", data);
 
-      if (data.payment_url) {
+      if (data?.payment_url
+        ) {
         // Redirect user to the payment page
         window.location.href = data.payment_url;
       } else {
