@@ -182,7 +182,8 @@ const Checkout = () => {
           },
         }
       );
-console.log('test',response?.data)
+console.log('test data',response?.data)
+console.log('test status',response.data.payment_url)
       // If status is true, redirect to payment_url
       if (response.data?.status) {
         window.location.href = response.data.payment_url;
