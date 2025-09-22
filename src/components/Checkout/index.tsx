@@ -385,7 +385,7 @@ const Checkout = () => {
   };
 
   return (
-    <div>
+    <div className="mt-5">
       <h1>Checkout Page</h1>
       <button onClick={handlePayment} disabled={loading}>
         {loading ? "Processing..." : "Pay Now"}
