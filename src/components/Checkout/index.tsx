@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { useState } from "react";
 import Breadcrumb from "../Common/Breadcrumb";
 import Login from "./Login";
 import Shipping from "./Shipping";
@@ -8,7 +9,64 @@ import PaymentMethod from "./PaymentMethod";
 import Coupon from "./Coupon";
 import Billing from "./Billing";
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+   
+
+
+
+
+
+
+
 const Checkout = () => {
+
+  const [loading, setLoading] = useState(false);
+
+  const handlePayment = async () => {
+    setLoading(true);
+    try {
+      const res = await fetch("/api/payment", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          phone: "01612345678",
+          amount: "500"
+        })
+      });
+
+      const data = await res.json();
+
+      if (data?.payment_url) {
+        window.location.href = data.payment_url; // Redirect to RupantorPay
+      } else {
+        alert("Payment initiation failed.");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Something went wrong!");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const orderItems = [
     { name: "iPhone 14 Plus, 6/128GB", price: 899 },
     { name: "Asus RT Dual Band Router", price: 129 },
@@ -17,6 +75,9 @@ const Checkout = () => {
   ];
 
   const totalPrice = orderItems.reduce((sum, item) => sum + item.price, 0);
+
+
+
 
   return (
     <>
@@ -84,12 +145,13 @@ const Checkout = () => {
                 </div>
 
                 <Coupon />
-                <ShippingMethod />
-                <PaymentMethod />
+                {/* <ShippingMethod /> */}
+                {/* <PaymentMethod /> */}
 
                 {/* Checkout Button */}
                 <button
                   type="submit"
+                  onClick={handlePayment}
                   className="w-full flex justify-center font-medium text-white bg-blue py-3 px-6 rounded-md ease-out duration-200 hover:bg-blue-dark"
                 >
                   Proceed to Checkout
