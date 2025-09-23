@@ -146,7 +146,7 @@ const shopData: Product[] = [
     title: "Canva Pro - 1 Year Subscription",
     reviews: 120,
     price: 199.0,
-    discountedPrice: 6.0,
+    discountedPrice: 1.0,
     id: 1,
     imgs: {
       thumbnails: [
