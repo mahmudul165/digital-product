@@ -2,16 +2,17 @@
 
 import Link from "next/link";
 
-const CancelPage = () => {
+export default function CancelPage() {
   return (
-    <div className="flex flex-col items-center justify-center h-screen gap-4">
-      <h1 className="text-3xl font-bold text-red-600">❌ Payment Canceled</h1>
-      <p className="text-gray-600">Your payment was not completed.</p>
-      <Link href="/" className="px-4 py-2 bg-blue-600 text-white rounded-lg">
+    <div className="flex flex-col items-center justify-center h-screen gap-6 bg-red-50">
+      <h1 className="text-4xl font-bold text-red-600">❌ Payment Canceled</h1>
+      <p className="text-gray-700">Your payment was not completed. Please try again.</p>
+      <Link
+        href="/checkout"
+        className="px-6 py-3 bg-blue-600 text-white rounded-xl shadow hover:bg-blue-700 transition"
+      >
         Try Again
       </Link>
     </div>
   );
-};
-
-export default CancelPage;
+}
