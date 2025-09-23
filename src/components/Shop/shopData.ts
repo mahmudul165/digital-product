@@ -146,7 +146,7 @@ const shopData: Product[] = [
     title: "Canva Pro - 1 Year Subscription",
     reviews: 120,
     price: 199.0,
-    discountedPrice: 12.0,
+    discountedPrice: 6.0,
     id: 1,
     imgs: {
       thumbnails: [
@@ -163,7 +163,7 @@ const shopData: Product[] = [
     title: "Envato Elements - 1 Month Access",
     reviews: 95,
     price: 79.0,
-    discountedPrice: 6.0,
+    discountedPrice: 4.0,
     id: 2,
     imgs: {
       thumbnails: [
@@ -180,7 +180,7 @@ const shopData: Product[] = [
     title: "Grammarly Premium - 6 Months",
     reviews: 88,
     price: 149.0,
-    discountedPrice: 9.0,
+    discountedPrice: 3.0,
     id: 3,
     imgs: {
       thumbnails: [
@@ -197,7 +197,7 @@ const shopData: Product[] = [
     title: "Microsoft Office 365 - Lifetime License",
     reviews: 210,
     price: 299.0,
-    discountedPrice: 5.0,
+    discountedPrice: 2.0,
     id: 4,
     imgs: {
       thumbnails: [
@@ -214,7 +214,7 @@ const shopData: Product[] = [
     title: "ChatGPT Plus - 1 Month Subscription",
     reviews: 150,
     price: 39.0,
-    discountedPrice: 9.0,
+    discountedPrice: 3.0,
     id: 5,
     imgs: {
       thumbnails: [
