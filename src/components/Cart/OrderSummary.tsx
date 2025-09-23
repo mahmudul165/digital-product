@@ -1,50 +1,14 @@
 import { selectTotalPrice } from "@/redux/features/cart-slice";
 import { useAppSelector } from "@/redux/store";
 import React, { useState } from "react";
+// import toast, { Toaster } from "react-hot-toast";
 import { useSelector } from "react-redux";
-
+import { useRouter } from "next/navigation";
 const OrderSummary = () => {
   const cartItems = useAppSelector((state) => state.cartReducer.items);
   const totalPrice = useSelector(selectTotalPrice);
   const [loading, setLoading] = useState(false);
-
-  const handlePayment = async () => {
-    setLoading(true);
-
-    try {
-      const res = await fetch("/api/payment", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success`,
-          cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cancel`,
-          amount: 5, // your amount
-          fullname: 'Mahmud',
-          email: 'mahmudulh883@gmail.com',
-          webhook_url: 'https://digital-product-orpin.vercel.app',
-          metadata: {phone: '01745130175'}
-        }),
-      });
-
-      const data = await res.json();
-      console.log("Payment Response:", data);
-
-      if (data?.payment_url
-        ) {
-        // Redirect user to the payment page
-        window.location.href = data.payment_url;
-      } else {
-        alert("Payment creation failed");
-      }
-    } catch (err) {
-      console.error("Payment Error:", err);
-      alert("Payment Error. Check console.");
-    } finally {
-      setLoading(false);
-    }
-  };
+  const router = useRouter()
   return (
     <div className="lg:max-w-[455px] w-full">
       {/* <!-- order list box --> */}
@@ -72,7 +36,7 @@ const OrderSummary = () => {
               </div>
               <div>
                 <p className="text-dark text-right">
-                  ${item.discountedPrice * item.quantity}
+                ৳ {item.discountedPrice * item.quantity}
                 </p>
               </div>
             </div>
@@ -85,19 +49,22 @@ const OrderSummary = () => {
             </div>
             <div>
               <p className="font-medium text-lg text-dark text-right">
-                ${totalPrice}
+              ৳ {totalPrice}
               </p>
             </div>
           </div>
 
-          {/* <!-- checkout button --> */}
-          <button
-            type="submit"
-            onClick={handlePayment} disabled={loading}
-            className="w-full flex justify-center font-medium text-white bg-blue py-3 px-6 rounded-md ease-out duration-200 hover:bg-blue-dark mt-7.5"
-          >
-            Process to Checkout
-          </button>
+
+          
+           <button 
+                onClick={() => router.push("/checkout")}
+                disabled={loading}
+                className={`w-full flex justify-center font-medium text-white bg-blue my-5 py-3 px-6 rounded-md ease-out duration-200 hover:bg-blue-dark ${
+                   loading ? "opacity-70 cursor-not-allowed" : ""
+                 }`}
+                >
+         {loading ? "Processing..." : "Process to Checkout"}
+       </button>
         </div>
       </div>
     </div>
