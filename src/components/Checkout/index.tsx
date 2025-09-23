@@ -347,45 +347,6 @@ import React, { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 
 const Checkout = () => {
-  // const [loading, setLoading] = useState(false);
-
-  // const handlePayment = async () => {
-  //   setLoading(true);
-
-  //   try {
-  //     const res = await fetch("/api/payment", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({
-  //         success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success`,
-  //         cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cancel`,
-  //         amount: 5, // your amount
-  //         fullname: 'Mahmud',
-  //         email: 'mahmudulh883@gmail.com',
-  //         webhook_url: 'https://digital-product-orpin.vercel.app',
-  //         metadata: {phone: '01745130175'}
-  //       }),
-  //     });
-
-  //     const data = await res.json();
-  //     console.log("Payment Response:", data);
-
-  //     if (data?.payment_url
-  //       ) {
-  //       // Redirect user to the payment page
-  //       window.location.href = data.payment_url;
-  //     } else {
-  //       alert("Payment creation failed");
-  //     }
-  //   } catch (err) {
-  //     console.error("Payment Error:", err);
-  //     alert("Payment Error. Check console.");
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
   const [loading, setLoading] = useState(false);
 
   const handlePayment = async () => {
@@ -394,26 +355,68 @@ const Checkout = () => {
     try {
       const res = await fetch("/api/payment", {
         method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success`,
+          cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cancel`,
+          amount: 5, // your amount
+          fullname: 'Mahmud',
+          email: 'mahmudulh883@gmail.com',
+          webhook_url: 'https://digital-product-orpin.vercel.app',
+          metadata: {phone: '01745130175'}
+        }),
       });
-
-      if (!res.ok) throw new Error("Failed to create payment");
 
       const data = await res.json();
       console.log("Payment Response:", data);
 
-      if (data?.payment_url) {
-        toast.success("Redirecting to payment gateway...");
+      if (data?.payment_url
+        ) {
+          toast.success("Redirecting to payment gateway...");
+        // Redirect user to the payment page
         window.location.href = data.payment_url;
       } else {
         toast.error("Payment creation failed. Try again.");
       }
-    } catch (error) {
-      console.error("Payment Error:", error);
+    } catch (err) {
+      console.error("Payment Error:", err);
       toast.error("Unexpected error. Please try again.");
     } finally {
       setLoading(false);
     }
   };
+
+
+  // const [loading, setLoading] = useState(false);
+
+  // const handlePayment = async () => {
+  //   setLoading(true);
+
+  //   try {
+  //     const res = await fetch("/api/payment", {
+  //       method: "POST",
+  //     });
+
+  //     if (!res.ok) throw new Error("Failed to create payment");
+
+  //     const data = await res.json();
+  //     console.log("Payment Response:", data);
+
+  //     if (data?.payment_url) {
+  //       toast.success("Redirecting to payment gateway...");
+  //       window.location.href = data.payment_url;
+  //     } else {
+  //       toast.error("Payment creation failed. Try again.");
+  //     }
+  //   } catch (error) {
+  //     console.error("Payment Error:", error);
+  //     toast.error("Unexpected error. Please try again.");
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
   return (
     <div className="mt-5">
       <h1>Checkout Page</h1> <h1>Checkout Page</h1> <h1>Checkout Page</h1> <h1>Checkout Page</h1> <h1>Checkout Page</h1> <h1>Checkout Page</h1> <h1>Checkout Page</h1> <h1>Checkout Page</h1>
