@@ -47,23 +47,82 @@
 
 
 
+// import { NextResponse } from "next/server";
+// import axios from "axios";
+
+// export async function POST(req) {
+//   try {
+//     const body = await req.json();
+
+//     const response = await axios.post(
+//       "https://payment.rupantorpay.com/api/payment/checkout",
+//       {
+//         success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success`,
+//         cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cancel`,
+//         fullname: body.fullname,
+//         amount: body.amount,
+//         email: body.email,
+//         webhook_url: "https://digital-product-orpin.vercel.app",
+//         metadata: { phone: body.phone },
+//       },
+//       {
+//         headers: {
+//           accept: "application/json",
+//           "X-API-KEY": process.env.RUPANTORPAY_API_KEY, // safe in backend
+//           "content-type": "application/json",
+//         },
+//       }
+//     );
+
+//     return NextResponse.json(response.data, { status: 200 });
+//   } catch (error) {
+//     console.error("Payment API Error:", error.response?.data || error.message);
+//     return NextResponse.json(
+//       { error: "Payment request failed" },
+//       { status: 500 }
+//     );
+//   }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import { NextResponse } from "next/server";
 import axios from "axios";
 
 export async function POST(req) {
   try {
     const body = await req.json();
+    console.log("Backend received body:", body);
+
+    // Destructure fields from body
+    const { fullname, email, amount, metadata, webhook_url, success_url, cancel_url } = body;
 
     const response = await axios.post(
       "https://payment.rupantorpay.com/api/payment/checkout",
       {
-        success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success`,
-        cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cancel`,
-        fullname: body.fullname,
-        amount: body.amount,
-        email: body.email,
-        webhook_url: "https://digital-product-orpin.vercel.app",
-        metadata: { phone: body.phone },
+        fullname,
+        email,
+        amount,
+        success_url,
+        cancel_url,
+        webhook_url: webhook_url || "https://digital-product-orpin.vercel.app",
+        metadata: {
+          phone: metadata?.phone,
+          notes: metadata?.notes,
+          cartItems: metadata?.cartItems,
+        },
       },
       {
         headers: {
@@ -73,6 +132,8 @@ export async function POST(req) {
         },
       }
     );
+
+    console.log("Payment Gateway Response:", response.data);
 
     return NextResponse.json(response.data, { status: 200 });
   } catch (error) {
