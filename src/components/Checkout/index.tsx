@@ -359,7 +359,7 @@ const Checkout = () => {
         body: JSON.stringify({
           success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success`,
           cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cancel`,
-          amount: 10, // your amount
+          amount: 5, // your amount
           fullname: 'mahmud',
           email: 'mahmudul.4918@gmail.com',
           webhook_url: 'https://digital-product-orpin.vercel.app',
