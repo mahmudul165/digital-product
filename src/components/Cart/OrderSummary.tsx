@@ -21,10 +21,10 @@ const OrderSummary = () => {
           success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success`,
           cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cancel`,
           amount: 5, // your amount
-          fullname: 'mahmud',
-          email: 'mahmudul.4918@gmail.com',
+          fullname: 'Mahmud',
+          email: 'mahmudulh883@gmail.com',
           webhook_url: 'https://digital-product-orpin.vercel.app',
-          metadata: {phone: '01568109275'}
+          metadata: {phone: '01745130175'}
         }),
       });
 
